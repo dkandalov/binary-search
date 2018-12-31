@@ -1,5 +1,8 @@
+import kotlincommon.listOfInts
+import kotlincommon.printed
 import kotlincommon.test.shouldEqual
 import org.junit.Test
+import kotlin.random.Random
 
 class BinarySearchTests {
     @Test fun `find index of an element in a sorted list`() {
@@ -28,6 +31,18 @@ class BinarySearchTests {
         }
         hugeList.findIndexOf(0) shouldEqual 0
         hugeList.findIndexOf(Int.MAX_VALUE - 1) shouldEqual Int.MAX_VALUE - 1
+    }
+
+    @Test fun `can search random sorted list`() {
+        val list = Random.listOfInts(
+            sizeRange = 0..100,
+            valuesRange = 0..100
+        ).sorted().printed()
+
+        list.forEach { element ->
+            val index = list.findIndexOf(element)
+            list[index] shouldEqual element
+        }
     }
 }
 
