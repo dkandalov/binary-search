@@ -36,7 +36,7 @@ class BinarySearchTests {
     @Test fun `can search random sorted list`() {
         val list = Random.listOfInts(
             sizeRange = 0..100,
-            valuesRange = 0..100
+            valuesRange = 0..50
         ).sorted().printed()
 
         list.forEach { element ->
@@ -46,7 +46,7 @@ class BinarySearchTests {
     }
 }
 
-private fun <E: Comparable<E>> List<E>.findIndexOf(element: E): Int {
+fun <E: Comparable<E>> List<E>.findIndexOf(element: E): Int {
     var from = 0
     var to = size
     while (from < to) {
